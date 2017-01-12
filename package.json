@@ -1,0 +1,45 @@
+{
+  "name": "react-frontend-scaffold",
+  "version": "0.1.0",
+  "description": "react-frontend-scaffold",
+  "author": "HingKwan",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guanzhenxing/react-frontend-scaffold.git"
+  },
+  "bugs": {
+    "url": "https://github.com/guanzhenxing/react-frontend-scaffold/issues"
+  },
+  "homepage": "https://github.com/guanzhenxing/react-frontend-scaffold#readme",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "redux"
+  ],
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "0.8.5",
+    "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
+    "redux-logger": "^2.7.4"
+  },
+  "dependencies": {
+    "humps": "^2.0.0",
+    "lodash": "^4.17.4",
+    "normalizr": "^3.1.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "react-router": "^3.0.1",
+    "react-router-redux": "^4.0.7",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
+  }
+}
