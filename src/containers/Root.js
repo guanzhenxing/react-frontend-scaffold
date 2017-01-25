@@ -3,7 +3,7 @@ import {Provider} from 'react-redux'
 import {Router} from 'react-router'
 import routes from '../routes'
 import DevTools from './DevTools'
-import GeneralUtil from '../utils/GeneralUtil';
+import GeneralUtil from '../utils/GeneralUtil'
 
 const Root = ({store, history}) => (
     <Provider store={store}>
@@ -12,11 +12,11 @@ const Root = ({store, history}) => (
             {GeneralUtil.isProdEnv() ? null : <DevTools />}
         </div>
     </Provider>
-)
+);
 
 Root.propTypes = {
     store: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
-}
+};
 
 export default Root
