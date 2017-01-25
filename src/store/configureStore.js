@@ -1,16 +1,13 @@
-
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
+import rootReducer from '../reducers'
 import api from '../middlewares/api'
 import apiRequester from '../middlewares/apiRequester'
-import rootReducer from '../reducers'
+import GeneralUtil from '../utils/GeneralUtil';
 
 import createLogger from 'redux-logger'
 import DevTools from '../containers/DevTools'
 
-const isProdEnv = () => {
-    return process.env.NODE_ENV === 'production'
-}
 
 /**
  * store增强
@@ -18,7 +15,7 @@ const isProdEnv = () => {
  * @returns {*}
  */
 const storeEnhancer = () => {
-    if (isProdEnv()) {  //生产环境配置
+    if (GeneralUtil.isProdEnv()) {  //生产环境配置
         return applyMiddleware(thunk, api, apiRequester)
     } else {    //开发环境配置
         return compose(
@@ -34,7 +31,7 @@ const storeEnhancer = () => {
  */
 const webpackHotReplaceReducers = store => {
 
-    if (!isProdEnv()) {  //开发环境
+    if (!GeneralUtil.isProdEnv()) {  //开发环境
         if (module.hot) {
             // Enable Webpack hot module replacement for reducers
             module.hot.accept('../reducers', () => {
