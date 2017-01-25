@@ -1,3 +1,5 @@
+https://github.com/sorrycc/blog/issues/1
+
 更新：我们基于此最佳实践做了一个封装方案：dva，可以简化使用 redux 和 redux-saga 时很多繁杂的操作。
 
 <img src="https://camo.githubusercontent.com/21740ab2fdb2ba1504678bfddf39ab9943adfa39/68747470733a2f2f6f732e616c697061796f626a656374732e636f6d2f726d73706f7274616c2f506b4a564957464a62705a63776d532e706e67" />
