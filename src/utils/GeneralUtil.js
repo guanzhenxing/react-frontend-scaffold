@@ -12,6 +12,38 @@ class GeneralUtil {
         return process.env.NODE_ENV === 'production'
     }
 
+    /**
+     * 对uri进行encode
+     * @param uri
+     * @returns {string}
+     */
+    static encodeURI(uri) {
+        return window.encodeURI(uri)
+    }
+
+    /**
+     * decode uri
+     * @param uri
+     * @returns {string}
+     */
+    static decodeURI(uri) {
+        return window.decodeURI(uri);
+    }
+
+    /**
+     * 判断字符串是不是JSON格式
+     * @param str
+     * @returns {boolean}
+     */
+    static isJsonString(str) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
+
 }
 
 export default GeneralUtil
