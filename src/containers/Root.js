@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import {Provider} from 'react-redux'
 import {Router} from 'react-router'
-import routes from '../routes'
+import routes from '../routes/index'
 import DevTools from './DevTools'
 import GeneralUtil from '../utils/GeneralUtil'
 
