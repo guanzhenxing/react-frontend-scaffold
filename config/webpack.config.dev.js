@@ -125,9 +125,6 @@ module.exports = {
                 include: paths.appSrc,
                 loader: 'babel',
                 query: {
-                    plugins: [
-                        ['import', [{libraryName: "antd", style: true}]],  // 加载 less 文件
-                    ],
                     cacheDirectory: true
                 }
             },

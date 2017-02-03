@@ -1,3 +1,2 @@
-
-/*引入ant.design CSS样式*/
-@import '../../node_modules/antd/dist/antd.css';
+/*引入normalize.css样式*/
+@import '~normalize.css/normalize.css';
