@@ -131,6 +131,9 @@ module.exports = {
                 include: paths.appSrc,
                 loader: 'babel',
                 query: {
+                    plugins: [
+                        ['import', [{libraryName: "antd", style: true}]],  // 加载 less 文件
+                    ]
                 }
             },
             // The notation here is somewhat confusing.
@@ -158,7 +161,11 @@ module.exports = {
             // 解析 less 文件，并加入变量覆盖配置
             {
                 test: /\.less$/,
-                loader: 'style!css!postcss!less'
+                loader: ExtractTextPlugin.extract(
+                    'css?sourceMap&!' +
+                    'postcss!' +
+                    'less-loader?{"sourceMap":true}'
+                )
             },
             // JSON is not enabled by default in Webpack but both Node and Browserify
             // allow it implicitly so we also enable it.

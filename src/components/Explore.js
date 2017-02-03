@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
+import {Input, Button} from 'antd';
 import styles from './Explore.css';
-const GITHUB_REPO = 'https://github.com/reactjs/redux'
+const GITHUB_REPO = 'https://github.com/reactjs/redux';
 
 export default class Explore extends Component {
     static propTypes = {
@@ -37,10 +38,10 @@ export default class Explore extends Component {
             <div>
                 <p>Type a username or repo full name and hit 'Go':</p>
                 <div className={styles['search']}>
-                    <input ref="input" placeholder="Basic usage"
+                    <Input ref="input" placeholder="Basic usage"
                            defaultValue={this.props.value}
                            onKeyUp={this.handleKeyUp}/>
-                    <button onClick={this.handleGoClick}>Go!!!</button>
+                    <Button onClick={this.handleGoClick}>Go!!!</Button>
                 </div>
                 <p>
                     Code on <a href={GITHUB_REPO} target="_blank">Github</a>.
