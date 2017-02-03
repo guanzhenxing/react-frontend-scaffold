@@ -2,7 +2,7 @@
  * fetch请求的工具类
  * Created by guanzhenxing on 2017-01-25.
  */
-import fetch from 'isomorphic-fetch'
+import 'whatwg-fetch'
 require('es6-promise').polyfill();
 import GeneralUtil from './GeneralUtil';
 import AuthTokenUtil from './AuthTokenUtil';
