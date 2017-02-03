@@ -150,8 +150,13 @@ module.exports = {
             // in the main CSS file.
             {
                 test: /\.css$/,
+                exclude: paths.appStyles,
                 loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[path][name]---[local]---[hash:base64:5]!postcss')
-                // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+            },
+            {
+                test: /\.css$/,
+                include: paths.appStyles,
+                loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1!postcss')
             },
             // 解析 less 文件，并加入变量覆盖配置
             {

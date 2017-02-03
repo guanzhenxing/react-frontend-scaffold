@@ -138,7 +138,13 @@ module.exports = {
             // in development "style" loader enables hot editing of CSS.
             {
                 test: /\.css$/,
+                exclude: paths.appStyles,
                 loader: 'style!css?modules&localIdentName=[path][name]---[local]---[hash:base64:5]!postcss'
+            },
+            {
+                test: /\.css$/,
+                include: paths.appStyles,
+                loader: 'style!css?importLoaders=1!postcss'
             },
             // 解析 less 文件，并加入变量覆盖配置
             {
