@@ -1,6 +1,7 @@
 
 # TODO LIST
-- 使用一些便捷的组件（redux-actions redux-saga等）
+- 使用一些便捷的组件（ redux-saga等）
+- 使用reselect https://github.com/reactjs/reselect
 - 添加API模拟。https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#integrating-with-an-api-backend
 - 单元测试用例相关
 

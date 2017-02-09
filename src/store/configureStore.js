@@ -1,13 +1,12 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
-import api from '../middlewares/api'
 import apiRequester from '../middlewares/apiRequester'
+import promise from '../middlewares/promise'
 import GeneralUtil from '../utils/GeneralUtil'
 
 import createLogger from 'redux-logger'
 import DevTools from '../containers/DevTools'
-
 
 /**
  * store增强
@@ -16,10 +15,10 @@ import DevTools from '../containers/DevTools'
  */
 const storeEnhancer = () => {
     if (GeneralUtil.isProdEnv()) {  //生产环境配置
-        return applyMiddleware(thunk, api, apiRequester)
+        return applyMiddleware(promise, thunk, apiRequester)
     } else {    //开发环境配置
         return compose(
-            applyMiddleware(thunk, api, apiRequester, createLogger()),
+            applyMiddleware(promise, thunk, apiRequester, createLogger()),
             DevTools.instrument()
         )
     }
@@ -40,7 +39,6 @@ const webpackHotReplaceReducers = store => {
             })
         }
     }
-
 };
 
 /**
@@ -55,9 +53,7 @@ const configureStore = preLoadedState => {
         preLoadedState,
         storeEnhancer()
     );
-
     webpackHotReplaceReducers(store);
-
     return store
 };
 
