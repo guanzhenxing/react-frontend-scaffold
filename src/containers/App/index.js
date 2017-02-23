@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import App from '../../components/App';
-import {fetchData} from '../../actions/AppAction';
+
 /**
  * state映射
  * @param state
@@ -13,8 +13,6 @@ const mapStateToProps = (state, ownProps) => ({
  * dispatch方法映射
  * @param dispatch
  */
-const mapDispatchToProps = (dispatch) => ({
-    fetchData: (data) => dispatch(fetchData(data))
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

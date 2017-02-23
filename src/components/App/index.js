@@ -11,7 +11,6 @@ import styles from './App.css';
 class App extends Component {
 
     componentDidMount() {
-        this.props.fetchData('This is a fetch data');
     }
 
 
