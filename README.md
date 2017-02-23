@@ -2,6 +2,8 @@
 # TODO LIST
 - 使用一些便捷的组件（ redux-saga等）
 - 使用reselect https://github.com/reactjs/reselect
+- 使用immutable
+- 使用i18n
 - 添加API模拟。https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#integrating-with-an-api-backend
 - 单元测试用例相关
 - 直接运行的项目。例如：运行npm run start:prod 即可运行生产环境
