@@ -4,6 +4,12 @@
  */
 class GeneralUtil {
 
+
+    static isDevEnv() {
+        return process.env.NODE_ENV === 'development'
+    }
+
+
     /**
      * 判断当前环境是否是production
      * @returns {boolean}

@@ -19,14 +19,18 @@ const sagaMiddleware = createSagaMiddleware(); //创建saga中间件
  * @returns {*}
  */
 const storeEnhancer = () => {
-    if (GeneralUtil.isProdEnv()) {  //生产环境配置
-        return applyMiddleware(sagaMiddleware)
-    } else {    //开发环境配置
-        return compose(
-            applyMiddleware(sagaMiddleware, createLogger()),
-            DevTools.instrument()
-        )
+
+    // 定义创建Store时所需要的中间件
+    const middleWares = [sagaMiddleware];
+    if (GeneralUtil.isDevEnv()) {
+        middleWares.concat(createLogger())
     }
+
+    const enhancers = [
+        applyMiddleware(...middleWares)
+    ];
+
+    return GeneralUtil.isDevEnv() ? compose(...enhancers, DevTools.instrument()) : compose(...enhancers)
 
 };
 
@@ -46,17 +50,17 @@ const webpackHotReplaceReducers = store => {
 
 /**
  * 配置store
- * @param preLoadedState
+ * @param initialState
  * @returns {Store<S>}
  */
-const configureStore = preLoadedState => {
+const configureStore = (initialState = {}) => {
 
     const store = createStore(
         rootReducer,
-        preLoadedState,
-        storeEnhancer()
+        initialState,
+        storeEnhancer(),
     );
-    sagaMiddleware.run(rootSaga);
+    sagaMiddleware.run(rootSaga);   //运行sagas
 
     if (!GeneralUtil.isProdEnv()) {  //开发环境
         webpackHotReplaceReducers(store);
