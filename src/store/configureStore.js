@@ -1,12 +1,17 @@
 import {createStore, applyMiddleware, compose} from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from '../reducers'
-import apiRequester from '../middlewares/apiRequester'
-import promise from '../middlewares/promise'
+
 import GeneralUtil from '../utils/GeneralUtil'
 
 import createLogger from 'redux-logger'
 import DevTools from '../containers/DevTools'
+
+import createSagaMiddleware from 'redux-saga'
+
+import rootReducer from '../reducers'
+import rootSaga from '../sagas'
+
+
+const sagaMiddleware = createSagaMiddleware(); //创建saga中间件
 
 /**
  * store增强
@@ -14,14 +19,19 @@ import DevTools from '../containers/DevTools'
  * @returns {*}
  */
 const storeEnhancer = () => {
-    if (GeneralUtil.isProdEnv()) {  //生产环境配置
-        return applyMiddleware(promise, thunk, apiRequester)
-    } else {    //开发环境配置
-        return compose(
-            applyMiddleware(promise, thunk, apiRequester, createLogger()),
-            DevTools.instrument()
-        )
+
+    // 定义创建Store时所需要的中间件
+    const middleWares = [sagaMiddleware];
+    if (GeneralUtil.isDevEnv()) {
+        middleWares.concat(createLogger())
     }
+
+    const enhancers = [
+        applyMiddleware(...middleWares)
+    ];
+
+    return GeneralUtil.isDevEnv() ? compose(...enhancers, DevTools.instrument()) : compose(...enhancers)
+
 };
 
 /**
@@ -29,31 +39,33 @@ const storeEnhancer = () => {
  * @param store
  */
 const webpackHotReplaceReducers = store => {
-
-    if (!GeneralUtil.isProdEnv()) {  //开发环境
-        if (module.hot) {
-            // Enable Webpack hot module replacement for reducers
-            module.hot.accept('../reducers', () => {
-                const nextRootReducer = require('../reducers').default;
-                store.replaceReducer(nextRootReducer)
-            })
-        }
+    if (module.hot) {
+        // Enable Webpack hot module replacement for reducers
+        module.hot.accept('../reducers', () => {
+            const nextRootReducer = require('../reducers').default;
+            store.replaceReducer(nextRootReducer)
+        })
     }
 };
 
 /**
  * 配置store
- * @param preLoadedState
+ * @param initialState
  * @returns {Store<S>}
  */
-const configureStore = preLoadedState => {
+const configureStore = (initialState = {}) => {
 
     const store = createStore(
         rootReducer,
-        preLoadedState,
-        storeEnhancer()
+        initialState,
+        storeEnhancer(),
     );
-    webpackHotReplaceReducers(store);
+    sagaMiddleware.run(rootSaga);   //运行sagas
+
+    if (!GeneralUtil.isProdEnv()) {  //开发环境
+        webpackHotReplaceReducers(store);
+    }
+
     return store
 };
 

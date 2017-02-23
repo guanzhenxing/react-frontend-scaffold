@@ -10,6 +10,6 @@ import app from './app';
 const rootReducer = combineReducers({
     routing,
     app
-})
+});
 
 export default rootReducer

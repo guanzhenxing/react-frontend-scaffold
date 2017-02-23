@@ -11,6 +11,8 @@
  *      }
  *   }
  *}
+ *
+ * 使用redux-thunk中间件时候，配合该中间件使用
  * Created by guanzhenxing on 2017-01-25.
  */
 export const REQUEST_API = Symbol('Request API');

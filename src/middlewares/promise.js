@@ -1,5 +1,6 @@
 /**
  * 处理promise的redux中间件
+ * 使用redux-actions + redux-thunk + 此中间件（redux-promise的替代品）
  * Created by guanzhenxing on 2017-02-08.
  */
 import _ from 'lodash';

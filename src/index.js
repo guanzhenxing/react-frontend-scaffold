@@ -13,4 +13,4 @@ const history = syncHistoryWithStore(browserHistory, store);
 ReactDOM.render(
     <Root store={store} history={history}/>,
     document.getElementById('root')
-)
+);
