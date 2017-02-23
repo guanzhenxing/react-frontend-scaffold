@@ -11,7 +11,7 @@ import rootReducer from '../reducers'
 import rootSaga from '../sagas'
 
 
-const sagaMiddleware = createSagaMiddleware();  //创建saga中间件
+const sagaMiddleware = createSagaMiddleware(); //创建saga中间件
 
 /**
  * store增强

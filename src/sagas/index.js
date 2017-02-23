@@ -1,5 +1,5 @@
 /**
- * single entry point to start all Sagas at once
+ * 所有的的sagas都在此处汇合
  * Created by guanzhenxing on 2017-02-23.
  */
 
