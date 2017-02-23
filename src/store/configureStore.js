@@ -1,12 +1,17 @@
 import {createStore, applyMiddleware, compose} from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from '../reducers'
-import apiRequester from '../middlewares/apiRequester'
-import promise from '../middlewares/promise'
+
 import GeneralUtil from '../utils/GeneralUtil'
 
 import createLogger from 'redux-logger'
 import DevTools from '../containers/DevTools'
+
+import createSagaMiddleware from 'redux-saga'
+
+import rootReducer from '../reducers'
+import rootSaga from '../sagas'
+
+
+const sagaMiddleware = createSagaMiddleware();  //创建saga中间件
 
 /**
  * store增强
@@ -15,13 +20,14 @@ import DevTools from '../containers/DevTools'
  */
 const storeEnhancer = () => {
     if (GeneralUtil.isProdEnv()) {  //生产环境配置
-        return applyMiddleware(promise, thunk, apiRequester)
+        return applyMiddleware(sagaMiddleware)
     } else {    //开发环境配置
         return compose(
-            applyMiddleware(promise, thunk, apiRequester, createLogger()),
+            applyMiddleware(sagaMiddleware, createLogger()),
             DevTools.instrument()
         )
     }
+
 };
 
 /**
@@ -29,15 +35,12 @@ const storeEnhancer = () => {
  * @param store
  */
 const webpackHotReplaceReducers = store => {
-
-    if (!GeneralUtil.isProdEnv()) {  //开发环境
-        if (module.hot) {
-            // Enable Webpack hot module replacement for reducers
-            module.hot.accept('../reducers', () => {
-                const nextRootReducer = require('../reducers').default;
-                store.replaceReducer(nextRootReducer)
-            })
-        }
+    if (module.hot) {
+        // Enable Webpack hot module replacement for reducers
+        module.hot.accept('../reducers', () => {
+            const nextRootReducer = require('../reducers').default;
+            store.replaceReducer(nextRootReducer)
+        })
     }
 };
 
@@ -53,7 +56,12 @@ const configureStore = preLoadedState => {
         preLoadedState,
         storeEnhancer()
     );
-    webpackHotReplaceReducers(store);
+    sagaMiddleware.run(rootSaga);
+
+    if (!GeneralUtil.isProdEnv()) {  //开发环境
+        webpackHotReplaceReducers(store);
+    }
+
     return store
 };
 
