@@ -9,3 +9,5 @@
  * Created by guanzhenxing on 2017-02-24.
  */
 
+export const SEARCH_USERNAME = 'xxx/App/SEARCH_USERNAME';
+export const CHANGE_USERNAME = 'xxx/App/CHANGE_USERNAME';

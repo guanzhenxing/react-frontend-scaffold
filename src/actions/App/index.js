@@ -16,3 +16,22 @@
  *
  * Created by guanzhenxing on 2017-02-24.
  */
+import {
+    CHANGE_USERNAME,
+    SEARCH_USERNAME
+} from '../../constants/actionTypes';
+
+export function searchUserName(userName) {
+    return {
+        type: SEARCH_USERNAME,
+        userName
+    }
+}
+
+
+export function changeUserName(value) {
+    return {
+        type: CHANGE_USERNAME,
+        value
+    }
+}

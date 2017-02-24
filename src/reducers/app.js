@@ -4,7 +4,14 @@
 
 import {fromJS} from 'immutable';
 
-function app(state = {}, action) {
+// The initial state of the App
+const initialState = fromJS({
+    loading: false,
+    error: false,
+    success: false,
+});
+
+function app(state = initialState, action) {
 
     switch (action.type) {
         default:
