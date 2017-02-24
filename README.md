@@ -1,8 +1,6 @@
 
 # TODO LIST
-- 使用一些便捷的组件（ redux-saga等）
 - 使用reselect https://github.com/reactjs/reselect
-- 使用immutable
 - 使用i18n
 - 加载本地字体
 - 添加API模拟。https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#integrating-with-an-api-backend
@@ -18,7 +16,9 @@
 |- public  静态资源目录，该文件夹不会被webpack打包
 |- scripts  运行脚本目录
 |- src  源代码目录
+|-- actions  action目录
 |-- components  组件View目录
+|-- constants   常量目录
 |-- containers  组件容器目录
 |-- middlewares  中间件目录
 |-- reducers  reducer目录
