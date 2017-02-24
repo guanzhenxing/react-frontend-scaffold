@@ -75,13 +75,10 @@
     "webpack-manifest-plugin": "1.1.0"
   },
   "dependencies": {
-    "antd": "^2.6.4",
-    "es6-promise": "^4.0.5",
     "humps": "^2.0.0",
     "immutable": "^3.8.1",
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
-    "normalize.css": "^5.0.0",
     "normalizr": "^3.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -90,6 +87,7 @@
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-saga": "^0.14.3",
+    "styled-components": "^1.4.3",
     "whatwg-fetch": "^2.0.2"
   },
   "scripts": {

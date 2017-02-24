@@ -1,15 +1,16 @@
 /**
  * Created by guanzhenxing on 2017-02-09.
  */
-import {handleActions} from 'redux-actions'
-export default handleActions({
-    FETCH_DATA: (state, action) => {
-        console.log(action)
-        return {
-            ...state,
-            ...action.payload
-        }
+
+import {fromJS} from 'immutable';
+
+function app(state = {}, action) {
+
+    switch (action.type) {
+        default:
+            return state;
     }
-}, {
-    data: ''
-})
+
+}
+
+export default app;

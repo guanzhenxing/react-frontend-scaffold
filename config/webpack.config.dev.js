@@ -108,7 +108,6 @@ module.exports = {
                 exclude: [
                     /\.html$/,
                     /\.(js|jsx)$/,
-                    /\.less$/,
                     /\.css$/,
                     /\.json$/,
                     /\.svg$/
@@ -123,13 +122,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 include: paths.appSrc,
-                loader: 'babel',
-                query: {
-                    plugins: [
-                        ['import', [{libraryName: 'antd', style: true}]],
-                    ],
-                    cacheDirectory: true
-                }
+                loader: 'babel'
             },
             // "postcss" loader applies autoprefixer to our CSS.
             // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -138,18 +131,9 @@ module.exports = {
             // in development "style" loader enables hot editing of CSS.
             {
                 test: /\.css$/,
-                exclude: paths.appStyles,
+                include: paths.appSrc,
+                exclude: paths.appNodeModules,
                 loader: 'style!css?modules&localIdentName=[path][name]---[local]---[hash:base64:5]!postcss'
-            },
-            {
-                test: /\.css$/,
-                include: paths.appStyles,
-                loader: 'style!css?importLoaders=1!postcss'
-            },
-            // 解析 less 文件，并加入变量覆盖配置
-            {
-                test: /\.less$/,
-                loader: 'style!css!postcss!less'
             },
             // JSON is not enabled by default in Webpack but both Node and Browserify
             // allow it implicitly so we also enable it.
