@@ -37,7 +37,6 @@ module.exports = {
     appIndexJs: resolveApp('src/index.js'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
-    appStyles: resolveApp('src/index.css'),
     yarnLockFile: resolveApp('yarn.lock'),
     testsSetup: resolveApp('src/setupTests.js'),
     appNodeModules: resolveApp('node_modules'),
