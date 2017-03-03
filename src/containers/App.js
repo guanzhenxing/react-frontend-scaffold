@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react'
-import {bindActionCreators} from 'redux'
+// import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Header from '../components/Header'
 import MainSection from '../components/MainSection'
-import * as TodoActions from '../actions/TodoActions'
+import * as todoActions from '../actions/TodoActions'
 
 const App = ({todos, actions}) => (
     <div>
@@ -22,7 +22,14 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: {
+        addTodo: (text) => dispatch(todoActions.addTodo(text)),
+        deleteTodo: (id) => dispatch(todoActions.deleteTodo(id)),
+        editTodo: (id, text) => dispatch(todoActions.editTodo(id, text)),
+        completeTodo: (id) => dispatch(todoActions.completeTodo(id)),
+        completeAll: () => dispatch(todoActions.completeAll()),
+        clearCompleted: () => dispatch(todoActions.clearCompleted())
+    }
 })
 
 export default connect(

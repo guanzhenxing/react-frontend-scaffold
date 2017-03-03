@@ -7,9 +7,14 @@
  * 创建一个rootSaga的Generator函数
  * @returns {rootSaga}
  */
+
+import todos from './todos'
+
 function createRootSaga() {
     return function* rootSaga() {
-        yield []
+        yield [
+            todos()
+        ]
     }
 }
 
