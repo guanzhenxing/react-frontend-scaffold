@@ -1,4 +1,5 @@
 import {
+    ADD_TODO_FETCH,
     ADD_TODO_SUCCESS,
     DELETE_TODO,
     EDIT_TODO,
@@ -17,6 +18,11 @@ const initialState = [
 
 export default function todos(state = initialState, action) {
     switch (action.type) {
+
+        case ADD_TODO_FETCH:
+
+            return state;
+
         case ADD_TODO_SUCCESS:
             return [
                 {

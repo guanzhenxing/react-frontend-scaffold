@@ -9,9 +9,10 @@
  * Created by guanzhenxing on 2017-02-24.
  */
 
+export const ADD_TODO = 'ADD_TODO';
+export const ADD_TODO_FETCH = 'ADD_TODO_FETCH';
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS';
 
-export const ADD_TODO = 'ADD_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 export const EDIT_TODO = 'EDIT_TODO';
 export const COMPLETE_TODO = 'COMPLETE_TODO';
