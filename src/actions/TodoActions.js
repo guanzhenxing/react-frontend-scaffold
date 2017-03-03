@@ -1,4 +1,8 @@
 /**
+ * Created by guanzhenxing on 2017-03-03.
+ */
+
+/**
  * App Actions
  *
  * Actions change things in your application
@@ -16,22 +20,11 @@
  *
  * Created by guanzhenxing on 2017-02-24.
  */
-import {
-    CHANGE_USERNAME,
-    SEARCH_USERNAME
-} from '../../constants/actionTypes';
+import * as types from '../constants/ActionTypes';
 
-export function searchUserName(userName) {
-    return {
-        type: SEARCH_USERNAME,
-        userName
-    }
-}
-
-
-export function changeUserName(value) {
-    return {
-        type: CHANGE_USERNAME,
-        value
-    }
-}
+export const addTodo = text => ({type: types.ADD_TODO, text});
+export const deleteTodo = id => ({type: types.DELETE_TODO, id});
+export const editTodo = (id, text) => ({type: types.EDIT_TODO, id, text});
+export const completeTodo = id => ({type: types.COMPLETE_TODO, id});
+export const completeAll = () => ({type: types.COMPLETE_ALL});
+export const clearCompleted = () => ({type: types.CLEAR_COMPLETED});

@@ -1,7 +1,7 @@
 import {routerReducer as routing} from 'react-router-redux'
 import {combineReducers} from 'redux'
 
-import app from './app';
+import todos from './todos';
 
 /**
  * 合并reducer
@@ -9,7 +9,7 @@ import app from './app';
  */
 const rootReducer = combineReducers({
     routing,
-    app
+    todos
 });
 
 export default rootReducer
