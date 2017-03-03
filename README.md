@@ -22,12 +22,13 @@
 |-- containers  组件容器目录
 |-- middlewares  中间件目录
 |-- reducers  reducer目录
-|-- routes  路由目录
+|-- repositories 持久化（数据请求）
 |-- sagas  saga目录
 |-- store  store目录
 |-- utils  工具目录
 |-- global-styles.js  全局定义的CSS样式（不会被模块化）
 |-- index.js  程序的主入口
+|-- routes.js 路由
 |- package.json
 ```
 
