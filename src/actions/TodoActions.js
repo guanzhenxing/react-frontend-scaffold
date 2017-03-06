@@ -22,12 +22,19 @@
  */
 import * as types from '../constants/ActionTypes';
 
-export const addTodo = text => ({type: types.ADD_TODO, text});
-export const deleteTodo = id => ({type: types.DELETE_TODO, id});
-export const editTodo = (id, text) => ({type: types.EDIT_TODO, id, text});
+
 export const completeTodo = id => ({type: types.COMPLETE_TODO, id});
 export const completeAll = () => ({type: types.COMPLETE_ALL});
 export const clearCompleted = () => ({type: types.CLEAR_COMPLETED});
 
-
+export const addTodo = text => ({type: types.ADD_TODO, text});
 export const addTodoSuccess = text => ({type: types.ADD_TODO_SUCCESS, text});
+export const addTodoFailure = error => ({type: types.ADD_TODO_FAILURE, error});
+
+export const editTodo = (id, text) => ({type: types.EDIT_TODO, id, text});
+export const editTodoSuccess = (resp) => ({type: types.EDIT_TODO_SUCCESS, id: resp.id, text: resp.text});
+export const editTodoFailure = error => ({type: types.EDIT_TODO_FAILURE, error});
+
+export const deleteTodo = id => ({type: types.DELETE_TODO, id});
+export const deleteTodoSuccess = id => ({type: types.DELETE_TODO_SUCCESS, id});
+export const deleteTodoFailure = error => ({type: types.DELETE_TODO_FAILURE, error});

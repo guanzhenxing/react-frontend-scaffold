@@ -24,8 +24,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     actions: {
         addTodo: (text) => dispatch(todoActions.addTodo(text)),
-        deleteTodo: (id) => dispatch(todoActions.deleteTodo(id)),
         editTodo: (id, text) => dispatch(todoActions.editTodo(id, text)),
+        deleteTodo: (id) => dispatch(todoActions.deleteTodo(id)),
         completeTodo: (id) => dispatch(todoActions.completeTodo(id)),
         completeAll: () => dispatch(todoActions.completeAll()),
         clearCompleted: () => dispatch(todoActions.clearCompleted())
