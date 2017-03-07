@@ -10,16 +10,18 @@ const App = ({todos, actions}) => (
         <Header addTodo={actions.addTodo}/>
         <MainSection todos={todos} actions={actions}/>
     </div>
-)
+);
 
 App.propTypes = {
     todos: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired
-}
+};
+
+const getTodos = (state) => state.todos;
 
 const mapStateToProps = state => ({
-    todos: state.todos
-})
+    todos: getTodos(state)
+});
 
 const mapDispatchToProps = dispatch => ({
     actions: {

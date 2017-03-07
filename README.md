@@ -1,6 +1,5 @@
 
 # TODO LIST
-- 使用reselect https://github.com/reactjs/reselect
 - 使用i18n
 - 加载本地字体
 - 添加API模拟。https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#integrating-with-an-api-backend
@@ -20,11 +19,11 @@
 |-- components  组件View目录
 |-- constants   常量目录
 |-- containers  组件容器目录
-|-- middlewares  中间件目录
 |-- reducers  reducer目录
 |-- repositories 持久化（数据请求）
 |-- sagas  saga目录
 |-- store  store目录
+|---- middlewares  中间件目录
 |-- utils  工具目录
 |-- global-styles.js  全局定义的CSS样式（不会被模块化）
 |-- index.js  程序的主入口
