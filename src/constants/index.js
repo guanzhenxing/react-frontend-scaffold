@@ -8,3 +8,7 @@
  *
  * Created by guanzhenxing on 2017-02-24.
  */
+
+export const LOAD_REPO_FETCH = 'boilerplate/App/LOAD_REPO_FETCH';
+export const LOAD_REPO_SUCCESS = 'boilerplate/App/LOAD_REPO_SUCCESS';
+export const LOAD_REPO_ERROR = 'boilerplate/App/LOAD_REPO_ERROR';
