@@ -1,11 +1,8 @@
 
 # TODO LIST
-- 使用i18n
-- 加载本地字体
 - 添加API模拟。https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#integrating-with-an-api-backend
 - 单元测试用例相关
 - 直接运行的项目。例如：运行npm run start:prod 即可运行生产环境
-
 # 目录结构
 
 ```
@@ -31,4 +28,6 @@
 |- package.json
 ```
 
+# 附加说明
 
+- i18n暂时不提供，可以使用Intl。参考：[react-boilerplate](https://github.com/react-boilerplate/react-boilerplate)

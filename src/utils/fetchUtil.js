@@ -4,8 +4,8 @@
  */
 import 'whatwg-fetch'
 
-import GeneralUtil from './GeneralUtil';
-import AuthTokenUtil from './AuthTokenUtil';
+import GeneralUtil from './generalUtil';
+import AuthTokenUtil from './authTokenUtil';
 
 class FetchUtil {
 

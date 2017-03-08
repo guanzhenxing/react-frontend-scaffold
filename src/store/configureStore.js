@@ -3,7 +3,7 @@ import createLogger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from '../reducers'
 import rootSaga from '../models'
-import GeneralUtil from '../utils/GeneralUtil'
+import GeneralUtil from '../utils/generalUtil'
 import DevTools from '../DevTools'
 
 const sagaMiddleware = createSagaMiddleware(); //创建saga中间件
