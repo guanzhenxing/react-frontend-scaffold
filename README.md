@@ -19,9 +19,9 @@
 |-- components  组件View目录
 |-- constants   常量目录
 |-- containers  组件容器目录
+|-- models  业务模块处理目录（主要为saga使用）
 |-- reducers  reducer目录
 |-- repositories 持久化（数据请求）
-|-- sagas  saga目录
 |-- store  store目录
 |---- middlewares  中间件目录
 |-- utils  工具目录

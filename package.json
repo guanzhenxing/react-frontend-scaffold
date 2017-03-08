@@ -30,7 +30,6 @@
     "babel-eslint": "7.1.1",
     "babel-jest": "17.0.2",
     "babel-loader": "6.2.7",
-    "babel-plugin-import": "^1.1.0",
     "babel-preset-react-app": "^2.0.1",
     "case-sensitive-paths-webpack-plugin": "1.1.4",
     "chalk": "1.1.3",
