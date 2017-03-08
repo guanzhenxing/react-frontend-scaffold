@@ -1,15 +1,10 @@
 import {createStore, applyMiddleware, compose} from 'redux'
-
-import GeneralUtil from '../utils/GeneralUtil'
-
 import createLogger from 'redux-logger'
-import DevTools from '../containers/DevTools'
-
 import createSagaMiddleware from 'redux-saga'
-
 import rootReducer from '../reducers'
-import rootSaga from '../sagas'
-
+import rootSaga from '../models'
+import GeneralUtil from '../utils/GeneralUtil'
+import DevTools from '../DevTools'
 
 const sagaMiddleware = createSagaMiddleware(); //创建saga中间件
 
