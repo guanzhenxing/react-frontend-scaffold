@@ -9,7 +9,7 @@ import {
     LOAD_REPO_SUCCESS,
     LOAD_REPO_FETCH,
     LOAD_REPO_ERROR,
-} from '../constants';
+} from '../constants/actionType';
 
 const initialState = fromJS({
     loading: false,

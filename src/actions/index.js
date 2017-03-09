@@ -18,4 +18,4 @@
  */
 
 
-import * as types from '../constants/index';
+import * as types from '../constants/actionType';
