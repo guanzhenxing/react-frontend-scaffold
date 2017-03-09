@@ -1,8 +1,4 @@
 
-# TODO LIST
-- 添加API模拟。https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#integrating-with-an-api-backend
-- 单元测试用例相关
-- 直接运行的项目。例如：运行npm run start:prod 即可运行生产环境
 # 目录结构
 
 ```
@@ -22,12 +18,22 @@
 |-- store  store目录
 |---- middlewares  中间件目录
 |-- utils  工具目录
+|-- config.js 配置目录
+|-- DevTools.js 开发工具组件
 |-- global-styles.js  全局定义的CSS样式（不会被模块化）
 |-- index.js  程序的主入口
 |-- routes.js 路由
 |- package.json
+
 ```
 
 # 附加说明
 
 - i18n暂时不提供，可以使用Intl。参考：[react-boilerplate](https://github.com/react-boilerplate/react-boilerplate)
+
+# 代码规范
+
+- 组件首字母大写。
+    - 形式一：App/index.js
+    - 形式二：App.js
+- 非组件的JS文件命名采用驼峰式。
