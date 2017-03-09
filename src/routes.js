@@ -1,7 +1,3 @@
-/**
- * Created by guanzhenxing on 2017-03-03.
- */
-
 import React from 'react'
 import {Route} from 'react-router'
 import App from './containers/App'

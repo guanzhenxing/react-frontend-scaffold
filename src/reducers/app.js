@@ -1,4 +1,5 @@
 /**
+ * 系统全局的reducer
  * Created by guanzhenxing on 2017-03-08.
  */
 

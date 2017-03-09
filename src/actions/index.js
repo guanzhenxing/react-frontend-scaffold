@@ -5,11 +5,7 @@
 /**
  * App Actions
  *
- * Actions change things in your application
- * Since this boilerplate uses a uni-directional data flow, specifically redux,
- * we have these actions which are the only way your application interacts with
- * your application state. This guarantees that your state is up to date and nobody
- * messes it up weirdly somewhere.
+ * 在actions中只定义各个Action,不进行任何的业务逻辑处理
  *
  * To add a new Action:
  * 1) Import your constant
