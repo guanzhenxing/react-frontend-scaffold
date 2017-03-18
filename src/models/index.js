@@ -8,23 +8,14 @@
  * @returns {rootSaga}
  */
 
+import auth from './auth';
 
 function createRootSaga() {
     return function* rootSaga() {
-        yield []
+        yield [
+            auth()
+        ]
     }
 }
 
 export default createRootSaga();
-
-
-//在这边进行业务逻辑处理 （独立到另一个文件中）
-// import {call, put, takeEvery}  from 'redux-saga/effects'
-//
-// export default function*() {
-//     yield [
-//         // takeEvery(types.ADD_TODO, addTodoSaga),
-//         // takeEvery(types.EDIT_TODO, editTodoSaga),
-//         // takeEvery(types.DELETE_TODO, deleteTodoSaga)
-//     ]
-// }

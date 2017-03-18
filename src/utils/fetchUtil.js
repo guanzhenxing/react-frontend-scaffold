@@ -5,7 +5,8 @@
 import 'whatwg-fetch'
 
 import GeneralUtil from './generalUtil';
-import AuthTokenUtil from './authTokenUtil';
+import authUtil from '../utils/nd/authUtil';
+import {getCurrentHost} from './configUtil';
 
 class FetchUtil {
 
@@ -50,7 +51,7 @@ class FetchUtil {
             'Content-Type': 'application/json; charset=UTF-8'
         };
         if (withAuthToken) {
-            headers['Authorization'] = AuthTokenUtil.getAuthorization();
+            headers['Authorization'] = authUtil.getAuthentization(method, url, getCurrentHost().target);
         }
         let options = {
             method: _method,
@@ -92,15 +93,22 @@ class FetchUtil {
         return this.request(url, data, 'POST')
     }
 
+    /**
+     * 头部带有验证的PATCH请求
+     * @param url 请求地址
+     * @param data patch的数据
+     */
+    static patch(url, data) {
+        return this.request(url, data, 'PATCH')
+    }
 
     /**
      * 头部带有验证的DELETE请求
      * @param url 请求地址
-     * @param data delete的数据
      * @returns {*}
      */
-    static delete(url, data) {
-        return this.request(url, data, 'DELETE')
+    static delete(url) {
+        return this.request(url, null, 'DELETE')
     }
 
 

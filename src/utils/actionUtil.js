@@ -10,11 +10,11 @@
  * @param meta
  * @returns {{type: *, payload: *, error: *, meta: *}}
  */
-export function createAction(type, payload, error, meta) {
+export function createAction(type, payload = null, error = null, meta = null) {
     return {
-        type,
-        payload,
-        error,
-        meta
+        type: type,
+        payload: payload,
+        error: error,
+        meta: meta
     }
 }

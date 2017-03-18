@@ -2,7 +2,7 @@
 # 目录结构
 
 ```
-|- _doc  文档目录
+
 |- build  打包生成的目录
 |- config  配置目录
 |- public  静态资源目录，该文件夹不会被webpack打包
@@ -27,13 +27,14 @@
 
 ```
 
-# 附加说明
-
-- i18n暂时不提供，可以使用Intl。参考：[react-boilerplate](https://github.com/react-boilerplate/react-boilerplate)
-
 # 代码规范
 
 - 组件首字母大写。
     - 形式一：App/index.js
     - 形式二：App.js
 - 非组件的JS文件命名采用驼峰式。
+
+
+
+# 优化点
+1) browserHistory封装一下，因为跳转的地方需要使用到

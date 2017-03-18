@@ -5,28 +5,33 @@
 const config = require('../config');
 
 
-class ConfigUtil {
-
-    /**
-     * 获得当前的HOST
-     */
-    static getCurrentHost() {
-        let _parse = (closure) => {
-            let envList = Object.keys(config.host);
-            for (let index = 0; index < envList.length; index++) {
-                let key = envList[index];
-                let env = config.host[key];
-                closure(env);
-            }
-        };
-        return _parse((env) => {
-            if (window.location.href.match(env.rule)) {
-                return env;
-            }
-        })
+const _parse = (configItem) => {
+    let envList = Object.keys(configItem);
+    for (let index = 0; index < envList.length; index++) {
+        let key = envList[index];
+        let env = configItem[key];
+        if (window.location.href.match(env.rule)) {
+            return env;
+        }
     }
+};
 
+/**
+ * 获得当前的HOST
+ */
+export function getCurrentHost() {
+    return _parse(config.host);
 }
 
 
-export default ConfigUtil
+/**
+ * 获得当前的UC
+ */
+export function getCurrentUC() {
+    return _parse(config.uc);
+}
+
+
+
+
+

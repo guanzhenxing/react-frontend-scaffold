@@ -2,9 +2,9 @@
  * Created by guanzhenxing on 2017-03-09.
  */
 
-import ConfigUtil from '../utils/configUtil';
+import {getCurrentHost} from '../utils/configUtil';
 
 /**
  * 当前的HOST
  */
-export const CURREENT_HOST = ConfigUtil.getCurrentHost();
+export const CURRENT_HOST = getCurrentHost().target;

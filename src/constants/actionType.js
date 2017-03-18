@@ -9,6 +9,12 @@
  * Created by guanzhenxing on 2017-02-24.
  */
 
-export const LOAD_REPO_FETCH = 'scaffold/App/LOAD_REPO_FETCH';
-export const LOAD_REPO_SUCCESS = 'scaffold/App/LOAD_REPO_SUCCESS';
-export const LOAD_REPO_ERROR = 'scaffold/App/LOAD_REPO_ERROR';
+export const FETCH = 'scaffold/App/FETCH';
+export const SUCCESS = 'scaffold/App/SUCCESS';
+export const ERROR = 'scaffold/App/ERROR';
+
+export const LOGIN = 'informatizition/login/LOGIN'; //登录
+export const LOGIN_FETCH = 'informatizition/login/LOGIN_FETCH'; //登录时候的Fetching
+export const LOGIN_SUCCESS = 'informatizition/login/LOGIN_SUCCESS'; //登录成功
+export const LOGIN_ERROR = 'informatizition/login/LOGIN_ERROR'; //登录失败
+export const LOGIN_CLEAN_ERROR = 'informatizition/login/LOGIN_CLEAN_ERROR'; //清除错误

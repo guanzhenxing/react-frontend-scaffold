@@ -108,6 +108,7 @@ module.exports = {
                 exclude: [
                     /\.html$/,
                     /\.(js|jsx)$/,
+                    /\.less$/,
                     /\.css$/,
                     /\.json$/,
                     /\.svg$/
@@ -122,13 +123,26 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 include: paths.appSrc,
-                loader: 'babel'
+                loader: 'babel',
+                query: {
+                    plugins: [
+                        ['import', [{ libraryName: 'antd', style: true }]],
+                    ],
+                    // This is a feature of `babel-loader` for webpack (not Babel itself).
+                    // It enables caching results in ./node_modules/.cache/babel-loader/
+                    // directory for faster rebuilds.
+                    cacheDirectory: true
+                }
             },
             // "postcss" loader applies autoprefixer to our CSS.
             // "css" loader resolves paths in CSS and adds assets as dependencies.
             // "style" loader turns CSS into JS modules that inject <style> tags.
             // In production, we use a plugin to extract that CSS to a file, but
             // in development "style" loader enables hot editing of CSS.
+            {
+                test: /\.less$/,
+                loader: 'style!css!postcss!less'
+            },
             {
                 test: /\.css$/,
                 include: paths.appSrc,
