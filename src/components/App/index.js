@@ -8,13 +8,14 @@ import React, {
     Component,
     PropTypes,
 } from 'react';
-import styles from './index.css';
+import  './index.css';
+import {Link} from 'react-router'
 
 const buildHeader = (props) => {
 
     return (
         <Header className="header">
-            <div className={styles['logo']}></div>
+            <div className='logo'></div>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} style={{lineHeight: '64px'}}>
             </Menu>
         </Header>
@@ -28,10 +29,9 @@ const buildMenu = (props) => {
             mode="inline"
             defaultSelectedKeys={['1']}
             style={{height: '100%'}}>
-            <Menu.Item key="1">option1</Menu.Item>
-            <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
-            <Menu.Item key="4">option4</Menu.Item>
+            <Menu.Item key="1"><Link to="/about">About</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/inbox">Inbox</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/login">Login</Link></Menu.Item>
         </Menu>
     )
 }

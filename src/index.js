@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import DevTools from './DevTools'
 import GeneralUtil from './utils/generalUtil'
-import {routes} from './routes'
+import routes from './routes'
 import configureStore from './store/configureStore'
 import './global-styles'
 
 const store = configureStore();
+
 
 /**
  * 页面主入口
