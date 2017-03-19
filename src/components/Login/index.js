@@ -55,7 +55,7 @@ class Login extends Component {
             username: e.currentTarget.value.trim(),
             password: ''
         });
-        if ('' != this.props.error) {
+        if ('' !== this.props.error) {
             this.props.cleanError()
         }
 
@@ -68,7 +68,7 @@ class Login extends Component {
         this.setState({
             password: e.currentTarget.value.trim()
         });
-        if ('' != this.props.error) {
+        if ('' !== this.props.error) {
             this.props.cleanError()
         }
     }

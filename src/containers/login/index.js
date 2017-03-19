@@ -7,8 +7,11 @@ import {login, cleanError} from '../../actions/auth/AuthAction';
 
 
 function mapStateToProps(state) {
+
+    let error = state.auth.get('error');
+
     return {
-        error: state.auth.get('error')
+        error: error && error.message
     }
 }
 

@@ -5,7 +5,7 @@
 import 'whatwg-fetch'
 
 import GeneralUtil from './generalUtil';
-import authUtil from '../utils/nd/authUtil';
+const authUtil = require('./authUtil');
 import {getCurrentHost} from './configUtil';
 
 class FetchUtil {
@@ -16,23 +16,7 @@ class FetchUtil {
      * @return {object}          The parsed JSON from the request
      */
     static parseJSON(response) {
-        return response.json();
-    }
-
-
-    /**
-     * Checks if a network request came back fine, and throws an error if not
-     * @param  {object} response   A response from a network request
-     * @return {object|undefined} Returns either the response, or throws an error
-     */
-    static checkStatus(response) {
-        if (response.status >= 200 && response.status < 300) {
-            return response;
-        }
-
-        const error = new Error(response.statusText);
-        error.response = response;
-        throw error;
+        return response.json().catch(e => (null));
     }
 
     /**
@@ -61,7 +45,17 @@ class FetchUtil {
             options['body'] = JSON.stringify(body);
         }
 
-        return fetch(_url, options).then(this.checkStatus).then(this.parseJSON);
+        return fetch(_url, options).then(response => {
+            return this.parseJSON(response).then(json => ({json, response}));
+        }).then(({json, response}) => {
+            if (!response.ok) {
+                return Promise.reject(json);
+            }
+            return json;
+        }).catch(e => {
+            throw e;
+        });
+
     }
 
     /**

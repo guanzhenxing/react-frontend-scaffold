@@ -7,11 +7,11 @@
 import {call, put, takeEvery}  from 'redux-saga/effects'
 import * as types from '../constants/actionType'
 import {onLoginFetch, onLoginSuccess, onLoginError} from '../actions/auth/AuthAction';
-import {getMD5Value} from '../utils/nd/NDMD5Util';
+import {getMD5Value} from '../utils/NDMD5Util';
 import {getCurrentUC, getCurrentHost} from  '../utils/configUtil';
 import FetchUtil from "../utils/fetchUtil";
-import DispatchUtil from '../utils/nd/dispatchUtil';
-const authUtil = require('../utils/nd/authUtil');
+import DispatchUtil from '../utils/dispatchUtil';
+const authUtil = require('../utils/authUtil');
 import {browserHistory} from 'react-router'
 
 /**
@@ -19,13 +19,13 @@ import {browserHistory} from 'react-router'
  * @param username
  * @param password
  */
-function* getToken(username, password) {
+function getToken(username, password) {
     let user = {
         login_name: username,
         password: getMD5Value(password)
     };
     let url = `${getCurrentUC().url}/tokens`;
-    return yield FetchUtil.request(url, user, 'POST', false);
+    return FetchUtil.request(url, user, 'POST', false);
 }
 
 /**
@@ -33,13 +33,13 @@ function* getToken(username, password) {
  * @param token
  */
 function* storeToken(tokens) {
-    authUtil.setTokens(tokens);
+    yield authUtil.setTokens(tokens);
 }
 
 /**
  * 获得用户信息
  */
-function* getUserInfo() {
+function getUserInfo() {
     let dispatchParam = {
         protocol: 'http',
         api: '/auth',
@@ -48,14 +48,14 @@ function* getUserInfo() {
         vars: {},
         module: "admin"
     };
-    return yield new DispatchUtil().dispatch(dispatchParam);
+    return new DispatchUtil().dispatch(dispatchParam);
 }
 
 /**
  * 存储用户信息
  */
 function* storeUserInfo(auth) {
-    authUtil.setAuth(auth);
+    yield authUtil.setAuth(auth);
 }
 
 /**

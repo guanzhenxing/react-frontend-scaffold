@@ -1,4 +1,3 @@
-'use strict';
 /**
  * @param {string} prefix  key 前缀
  * @param {number} expire  默认过期秒数
