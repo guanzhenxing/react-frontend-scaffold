@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import DevTools from './DevTools'
-import GeneralUtil from './utils/general-util'
+import {isProdEnv} from './utils/general-util'
 import routes from './routes'
 import configureStore from './store/configureStore'
 import './global-styles'
@@ -17,7 +17,7 @@ ReactDOM.render(
     <Provider store={store}>
         <div>
             {routes(store)}
-            {GeneralUtil.isProdEnv() ? null : <DevTools />}
+            {isProdEnv() ? null : <DevTools />}
         </div>
     </Provider>,
     document.getElementById('root')
