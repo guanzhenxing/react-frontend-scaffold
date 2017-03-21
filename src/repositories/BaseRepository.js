@@ -1,6 +1,6 @@
-import FetchUtil from "../utils/fetchUtil";
+import FetchUtil from "../utils/fetch-util";
 import DispatchUtil from '../utils/dispatchUtil';
-import {getCurrentHost} from '../utils/configUtil';
+import {getCurrentHost} from '../utils/config-util';
 
 /**
  * 基础的Base类

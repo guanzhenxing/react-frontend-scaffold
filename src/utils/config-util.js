@@ -23,7 +23,6 @@ export function getCurrentHost() {
     return _parse(config.host);
 }
 
-
 /**
  * 获得当前的UC
  */
@@ -31,9 +30,6 @@ export function getCurrentUC() {
     return _parse(config.uc);
 }
 
-export function getCurrentCS() {
-    return _parse(config.cs);
-}
 
 
 

@@ -10,8 +10,8 @@ import {
     LOGIN_ERROR,
     LOGIN_CLEAN_ERROR,
     LOGOUT
-} from '../constants/actionType';
-const authUtil = require('../utils/authUtil');
+} from '../constants/action-types';
+const authUtil = require('../utils/auth-util');
 
 const initialState = fromJS({
     loading: false,

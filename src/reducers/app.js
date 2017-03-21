@@ -9,7 +9,7 @@ import {
     FETCH,
     SUCCESS,
     ERROR,
-} from '../constants/actionType';
+} from '../constants/action-types';
 
 const initialState = fromJS({
     loading: false,

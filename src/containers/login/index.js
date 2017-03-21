@@ -3,7 +3,7 @@
  */
 import {connect} from 'react-redux';
 import Login from '../../components/Login';
-import {login, cleanError,logout} from '../../actions/auth/AuthAction';
+import {login, cleanError,logout} from '../../actions/auth/auth-action';
 
 
 function mapStateToProps(state) {

@@ -3,7 +3,7 @@ import createLogger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from '../reducers'
 import rootSaga from '../models'
-import GeneralUtil from '../utils/generalUtil'
+import {isDevEnv, isProdEnv} from '../utils/general-util'
 import DevTools from '../DevTools'
 
 const sagaMiddleware = createSagaMiddleware(); //创建saga中间件
@@ -17,7 +17,7 @@ const storeEnhancer = () => {
 
     // 定义创建Store时所需要的中间件
     const middleWares = [sagaMiddleware];
-    if (GeneralUtil.isDevEnv()) {
+    if (isDevEnv()) {
         middleWares.concat(createLogger())
     }
 
@@ -25,7 +25,7 @@ const storeEnhancer = () => {
         applyMiddleware(...middleWares)
     ];
 
-    return GeneralUtil.isDevEnv() ? compose(...enhancers, DevTools.instrument()) : compose(...enhancers)
+    return isDevEnv() ? compose(...enhancers, DevTools.instrument()) : compose(...enhancers)
 
 };
 
@@ -57,7 +57,7 @@ const configureStore = (initialState = {}) => {
     );
     sagaMiddleware.run(rootSaga);   //运行sagas
 
-    if (!GeneralUtil.isProdEnv()) {  //开发环境
+    if (!isProdEnv()) {  //开发环境
         webpackHotReplaceReducers(store);
     }
 

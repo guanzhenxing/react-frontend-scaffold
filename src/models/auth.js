@@ -5,13 +5,13 @@
 
 //在这边进行业务逻辑处理 （独立到另一个文件中）
 import {call, put, takeEvery}  from 'redux-saga/effects'
-import * as types from '../constants/actionType'
-import {onLoginFetch, onLoginSuccess, onLoginError} from '../actions/auth/AuthAction';
+import * as types from '../constants/action-types'
+import {onLoginFetch, onLoginSuccess, onLoginError} from '../actions/auth/auth-action';
 import {getMD5Value} from '../utils/NDMD5Util';
-import {getCurrentUC, getCurrentHost} from  '../utils/configUtil';
-import FetchUtil from "../utils/fetchUtil";
+import {getCurrentUC, getCurrentHost} from  '../utils/config-util';
+import FetchUtil from "../utils/fetch-util";
 import DispatchUtil from '../utils/dispatchUtil';
-const authUtil = require('../utils/authUtil');
+const authUtil = require('../utils/auth-util');
 import {hashHistory} from 'react-router'
 
 /**

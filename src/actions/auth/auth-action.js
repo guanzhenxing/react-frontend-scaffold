@@ -3,9 +3,9 @@
  * Created by guanzhenxing on 2017-03-17.
  */
 
-import * as types from '../../constants/actionType';
-import {createAction} from '../../utils/actionUtil';
-const authUtil = require('../../utils/authUtil');
+import * as types from '../../constants/action-types';
+import {createAction} from '../../utils/action-util';
+const authUtil = require('../../utils/auth-util');
 /**
  * 登录
  * @param user
@@ -54,6 +54,6 @@ export function onLoginError(error) {
  */
 export function logout() {
     authUtil.setTokens(null);
-    authUtil.setAuth(null);
+    // authUtil.setAuth(null);
     return createAction(types.LOGOUT)
 }

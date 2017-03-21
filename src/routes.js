@@ -1,7 +1,7 @@
 import React from 'react'
 import {Router, Route, hashHistory} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
-const authUtil = require('./utils/authUtil');
+const authUtil = require('./utils/auth-util');
 
 import App from './containers/app/index'
 import Login from './containers/login/index'
