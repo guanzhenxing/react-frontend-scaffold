@@ -146,7 +146,7 @@ module.exports = {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract(
                     'style',
-                    'css?importLoaders=1!postcss',
+                    'css?modules&localIdentName=[path][name]--[local]---[hash:base64:5]!postcss',
                     extractTextPluginOptions
                 )
                 // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
@@ -156,7 +156,7 @@ module.exports = {
                 loader: ExtractTextPlugin.extract(
                     'css?sourceMap&!' +
                     'postcss!' +
-                    'less-loader?{"sourceMap":true,"modifyVars":{"@primary-color":"#1DA57A"}}',
+                    'less-loader?{"sourceMap":true}',
                     extractTextPluginOptions
                 ),
             },

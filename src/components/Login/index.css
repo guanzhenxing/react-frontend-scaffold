@@ -129,9 +129,17 @@ input[type=checkbox] {
 .login-form__btn {
     width: 100%;
     height: 45px;
-    line-height: 40px;
+    line-height: 45px;
     font-size: 20px;
     text-align: center;
+    border: none;
+    border-radius: 2px;
+    background-color: #39f;
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
 }
 
 .login-form__btn--disabled {

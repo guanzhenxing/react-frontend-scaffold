@@ -2,11 +2,11 @@ import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import App from '../../components/App'
 
-App.propTypes = {};
-
-
 const mapStateToProps = state => {
-    return {}
+
+    return {
+        userInfo: state.auth.toJS().user['user_info'] || {}
+    }
 };
 
 const mapDispatchToProps = dispatch => {

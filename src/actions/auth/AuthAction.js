@@ -5,7 +5,7 @@
 
 import * as types from '../../constants/actionType';
 import {createAction} from '../../utils/actionUtil';
-
+const authUtil = require('../../utils/authUtil');
 /**
  * 登录
  * @param user
@@ -46,4 +46,14 @@ export function onLoginSuccess(res) {
  */
 export function onLoginError(error) {
     return createAction(types.LOGIN_ERROR, null, error)
+}
+
+/**
+ * 登出
+ * @returns {{type: *, payload: *, error: *, meta: *}}
+ */
+export function logout() {
+    authUtil.setTokens(null);
+    authUtil.setAuth(null);
+    return createAction(types.LOGOUT)
 }

@@ -31,6 +31,10 @@ export function getCurrentUC() {
     return _parse(config.uc);
 }
 
+export function getCurrentCS() {
+    return _parse(config.cs);
+}
+
 
 
 

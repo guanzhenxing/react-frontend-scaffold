@@ -18,9 +18,9 @@ function _convert(apiList) {
     let arr = [];
     ['customs', 'white_lists'].forEach(function (item) {
         let list;
-        list = (apiList && apiList[item] && apiList[item]).map(function (api) {
+        list = apiList && apiList[item] && (apiList[item].map(function (api) {
                 return api['interface_unique_key']
-            }) || [];
+            })) || [];
         if (list.length) {
             arr = arr.concat(list)
         }
@@ -31,11 +31,11 @@ function _convert(apiList) {
 
 // 对项目的操作api权限
 function _convertProjectApiList(apiList) {
-    let arr = (apiList && apiList['project_apis']).map(function (project) {
+    let arr = apiList && (apiList['project_apis'].map(function (project) {
             return project['apis'].map(function (api) {
                 return project['project_id'] + '#' + api['interface_unique_key']
             })
-        }) || [];
+        }) ) || [];
     let list = [];
     arr.forEach(function (item) {
         list = list.concat(item)
@@ -45,9 +45,9 @@ function _convertProjectApiList(apiList) {
 
 //白名单
 function _convertWhiteList(apiList) {
-    return (apiList && apiList['white_lists']).map(function (api) {
+    return apiList && (apiList['white_lists'].map(function (api) {
             return api['interface_unique_key']
-        }) || []
+        })) || []
 }
 
 /*

@@ -9,11 +9,13 @@
  */
 
 import auth from './auth';
+import team from './team';
 
 function createRootSaga() {
     return function* rootSaga() {
         yield [
-            auth()
+            auth(),
+            team()
         ]
     }
 }

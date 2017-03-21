@@ -7,7 +7,7 @@ import React, {
     Component,
     PropTypes,
 } from 'react';
-import './index.css';
+import styles from './index.css';
 
 class Login extends Component {
     constructor(props) {
@@ -19,6 +19,7 @@ class Login extends Component {
             isNameFieldFocus: false,
             userCheckStatus: false
         }
+        props.logout();
     }
 
     componentDidMount() {
@@ -101,43 +102,43 @@ class Login extends Component {
 
         return (
             <div>
-                <div className='loginBody'>
-                    <div className='loginRoad'></div>
+                <div className={styles['loginBody']}>
+                    <div className={styles['loginRoad']}></div>
                 </div>
-                <div className='loginPanel'>
+                <div className={styles['loginPanel']}>
                     <div
-                        className={'loginHi' + "   " + (this.state.isPasswordFieldFocus ? 'focusPassword' : "")}></div>
-                    <h1 className='siteTitle'>工程院项目信息化系统</h1>
-                    <form noValidate onSubmit={this.handleFormSubmit.bind(this)} className='login-form'>
+                        className={styles['loginHi'] + "   " + (this.state.isPasswordFieldFocus ? styles['focusPassword'] : "")}></div>
+                    <h1 className={styles['siteTitle']}>项目官网管理系统</h1>
+                    <form noValidate onSubmit={this.handleFormSubmit.bind(this)} className={`${styles['login-form']}`}>
                         <div>
-                            <div className='login-form__input'>
-                                <span className={'login-form__label' + " " + 'login-form-name'}/>
+                            <div className={`${styles['login-form__input']}`}>
+                                <span className={styles['login-form__label'] + " " + styles['login-form-name']}/>
                                 <input
-                                    className={errForUsername ? 'login-form__inputBox login-form__inputBox--err' : 'login-form__inputBox'}
+                                    className={errForUsername ? `${styles['login-form__inputBox']} ${styles['login-form__inputBox--err']}` : `${styles['login-form__inputBox']}`}
                                     placeholder="99U工号"
                                     type='text' value={this.state.username}
                                     onChange={this.handleUsernameChange.bind(this)}/>
 
-                                <span className='login-form__err'>{errForUsername}</span>
+                                <span className={`${styles['login-form__err']}`}>{errForUsername}</span>
                             </div>
-                            <div className='login-form__input'>
-                                <span className='login-form__label login-form-pwd'/>
+                            <div className={`${styles['login-form__input']}`}>
+                                <span className={styles['login-form__label'] + " " + styles['login-form-pwd']}/>
                                 <input
-                                    className={errForPassword ? 'login-form__inputBox login-form__inputBox--err' : 'login-form__inputBox'}
+                                    className={errForPassword ? `${styles['login-form__inputBox']} ${styles['login-form__inputBox--err']}` : `${styles['login-form__inputBox']}`}
                                     type="password" value={this.state.password}
                                     placeholder="99U登录密码"
                                     onFocus={this.focusPasswordField.bind(this)}
                                     onBlur={this.blurPasswordField.bind(this)}
                                     onChange={this.handlePasswordChange.bind(this)}/>
-                                <span className='login-form__err'>{errForPassword}</span>
+                                <span className={`${styles['login-form__err']}`}>{errForPassword}</span>
                             </div>
 
                         </div>
-                        <div className='loginFormBtn'>
-                            <input type='submit' value='登录' className='login-form__btn'/>
+                        <div className={styles['loginFormBtn']}>
+                            <input type='submit' value='登录' className={`${styles['login-form__btn']}`}/>
                         </div>
-                        <div className='error-login'>
-                            {this.props.error}
+                        <div className={styles['error-login']}>
+                            {this.props.loginErr}
                         </div>
                     </form>
                 </div>
@@ -148,6 +149,7 @@ class Login extends Component {
 
 Login.propTypes = {
     login: PropTypes.func,  //登录
+    logout: PropTypes.func,  //登出
     error: PropTypes.any,   //登录失败
     cleanError: PropTypes.func,  //清理错误
 };

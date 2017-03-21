@@ -3,7 +3,7 @@
  */
 import {connect} from 'react-redux';
 import Login from '../../components/Login';
-import {login, cleanError} from '../../actions/auth/AuthAction';
+import {login, cleanError,logout} from '../../actions/auth/AuthAction';
 
 
 function mapStateToProps(state) {
@@ -18,6 +18,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         login: (user) => dispatch(login(user)),
+        logout:()=>dispatch(logout()),
         cleanError: () => dispatch(cleanError())
     }
 }

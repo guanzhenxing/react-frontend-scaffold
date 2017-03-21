@@ -12,7 +12,7 @@ import {getCurrentUC, getCurrentHost} from  '../utils/configUtil';
 import FetchUtil from "../utils/fetchUtil";
 import DispatchUtil from '../utils/dispatchUtil';
 const authUtil = require('../utils/authUtil');
-import {browserHistory} from 'react-router'
+import {hashHistory} from 'react-router'
 
 /**
  * 获得用户的token
@@ -72,11 +72,12 @@ function* login(data) {
         const userInfo = yield call(getUserInfo);
         yield call(storeUserInfo, userInfo);
         yield put(onLoginSuccess({tokens, userInfo}));
-        browserHistory.push('/');
+        hashHistory.push('/');
     } catch (error) {
         yield put(onLoginError(error));
     }
 }
+
 
 export default function*() {
     yield [

@@ -1,23 +1,35 @@
 /**
  * Created by guanzhenxing on 2017-03-08.
  */
-import {Layout, Menu} from 'antd';
+import {Layout, Menu, Dropdown, Icon} from 'antd';
 const {SubMenu} = Menu;
 const {Header, Sider} = Layout;
 import React, {
     Component,
     PropTypes,
 } from 'react';
-import  './index.css';
+import  styles from './index.css';
 import {Link} from 'react-router'
 
 const buildHeader = (props) => {
 
+
+    const menu = (
+        <Menu theme="dark" mode="horizontal">
+            <Menu.Item key="logout"><Link to="/login">退出</Link></Menu.Item>
+        </Menu>
+    );
+
+    let userId = props.userInfo['user_id'];
+    let userName = props.userInfo['org_exinfo'] && props.userInfo['org_exinfo']['real_name'];
+
     return (
         <Header className="header">
-            <div className='logo'></div>
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} style={{lineHeight: '64px'}}>
-            </Menu>
+            <div className={styles['logo']}>工程院项目信息化系统</div>
+            <Dropdown overlay={menu}>
+                <a className="ant-dropdown-link" href="#" style={{float: 'right', color: '#ffffff'}}>
+                    {`${userName}(${userId})`} <Icon type="down"/> </a>
+            </Dropdown>
         </Header>
     )
 
@@ -27,11 +39,10 @@ const buildMenu = (props) => {
     return (
         <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
+            defaultSelectedKeys={['teamCluster']}
             style={{height: '100%'}}>
-            <Menu.Item key="1"><Link to="/about">About</Link></Menu.Item>
-            <Menu.Item key="2"><Link to="/inbox">Inbox</Link></Menu.Item>
-            <Menu.Item key="3"><Link to="/login">Login</Link></Menu.Item>
+            <Menu.Item key="teamCluster"><Link to="/teamCluster">项目集群</Link></Menu.Item>
+            <Menu.Item key="t20team"><Link to="/t20team">T20(TEAM)</Link></Menu.Item>
         </Menu>
     )
 }
@@ -59,7 +70,9 @@ class App extends Component {
     }
 }
 
-App.propTypes = {};
+App.propTypes = {
+    user: PropTypes.object,
+};
 App.defaultProps = {};
 
 export default App;

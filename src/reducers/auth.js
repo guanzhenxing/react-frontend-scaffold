@@ -8,15 +8,17 @@ import {
     LOGIN_FETCH,
     LOGIN_SUCCESS,
     LOGIN_ERROR,
-    LOGIN_CLEAN_ERROR
+    LOGIN_CLEAN_ERROR,
+    LOGOUT
 } from '../constants/actionType';
+const authUtil = require('../utils/authUtil');
 
 const initialState = fromJS({
     loading: false,
     error: null,
     success: false,
-    user: {},
-    token: {}
+    user: authUtil.getAuth() || {},
+    token: authUtil.getAccessToken() || {}
 });
 
 function auth(state = initialState, action) {
@@ -32,6 +34,8 @@ function auth(state = initialState, action) {
             return state.set('loading', false).set('error', action.error).set('success', false).set('user', {}).set('token', {});
         case LOGIN_CLEAN_ERROR:
             return state.set('loading', false).set('error', null).set('success', false).set('user', {}).set('token', {});
+        case LOGOUT:
+            return state.set('loading', true).set('error', null).set('success', true).set('user', {}).set('token', {});
         default:
             return state;
     }
