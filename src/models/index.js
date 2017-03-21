@@ -8,12 +8,12 @@
  * @returns {rootSaga}
  */
 
-import todos from './todos'
+import auth from './auth';
 
 function createRootSaga() {
     return function* rootSaga() {
         yield [
-            todos()
+            auth()
         ]
     }
 }

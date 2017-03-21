@@ -1,20 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {browserHistory} from 'react-router'
-import {syncHistoryWithStore} from 'react-router-redux'
-
+import {Provider} from 'react-redux'
+import DevTools from './DevTools'
+import GeneralUtil from './utils/general-util'
+import routes from './routes'
 import configureStore from './store/configureStore'
-
-// Import root app
-import Root from './containers/Root'
-
-// Import CSS reset and Global Styles
-import './global-styles';
+import './global-styles'
 
 const store = configureStore();
-const history = syncHistoryWithStore(browserHistory, store);
 
+
+/**
+ * 页面主入口
+ */
 ReactDOM.render(
-    <Root store={store} history={history}/>,
+    <Provider store={store}>
+        <div>
+            {routes(store)}
+            {GeneralUtil.isProdEnv() ? null : <DevTools />}
+        </div>
+    </Provider>,
     document.getElementById('root')
 );
