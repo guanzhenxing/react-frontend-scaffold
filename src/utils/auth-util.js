@@ -6,10 +6,7 @@ const storage = require('./storage');
 
 
 const tokensKey = 'AUTH-TOKENS';
-const authKey = 'AUTH-AUTH';
-
-var tokensObj;
-var authObj;
+const userKey = 'AUTH-USER';
 
 
 function randomCode() {
@@ -34,26 +31,17 @@ module.exports = {
         return !!this.getTokens()
     },
 
-
     /**
      * 获得tokens
      * @param key
      * @returns {*}
      */
     getTokens: function (key) {
-        var tokens = tokensObj;
-        if (!tokens) {
-            // 本地存储
-            tokens = storage.get(tokensKey)
-        }
+        var tokens = storage.get(tokensKey);
         if (tokens) {
-            // 失效判断
-            if (datetime(tokens['expires_at']).toNumber() <= datetime().toNumber()) {
+            if (datetime(tokens['expires_at']).toNumber() <= datetime().toNumber()) {// 失效判断
                 this.setTokens(tokens = null)
             }
-        }
-        if (tokens) {
-            tokensObj = tokens
         }
         if (key && tokens) {
             return tokens[key]
@@ -66,8 +54,6 @@ module.exports = {
      * @param {object} tokens token值
      */
     setTokens: function (tokens) {
-        tokensObj = tokens;
-
         if (tokens === null) {
             storage.remove(tokensKey)
         } else {
@@ -77,12 +63,26 @@ module.exports = {
     },
 
     /**
-     * 获得AccessToken
+     * 获得用户信息
      * @returns {*}
      */
-    getAccessToken: function () {
-        return this.getTokens('access_token')
+    getUser(){
+        let user = storage.get(userKey);
+        return user;
     },
+
+    /**
+     * 设置用户信息
+     * @param user
+     */
+    setUser(user){
+        if (user === null) {
+            storage.remove(userKey)
+        } else {
+            storage.set(userKey, user)
+        }
+    },
+
 
     /**
      * 获得访问认证
@@ -94,27 +94,30 @@ module.exports = {
     getAuthorization: function (method, url, host) {
         method = method.toUpperCase();
         url = encodeURI(url);
-        let access_token = this.getAccessToken();
+        let access_token = this.getTokens('access_token');
         let mac_key = this.getTokens('mac_key');
 
-        let strAuth = 'MAC id="' + access_token + '",nonce="';
         let nonce = new Date().getTime() + ':' + randomCode();
-        strAuth += nonce + '",mac="';
 
-        let path;
-        let pos = url.indexOf("://");
-        if (pos > 0) {
-            path = url.substring(pos + 3);
-            pos = path.indexOf("/");
-            host = path.substr(0, pos);
-            path = path.substring(pos);
-        } else {
-            path = url;
-        }
-        let request_content = nonce + '\n' + method + '\n' + path + '\n' + host + '\n';
-        let hash = Crypto.HmacSHA256(request_content, mac_key);
-        let mac = hash.toString(Crypto.enc.Base64);
-        strAuth += mac + '"';
+        let _getMac = function () {
+            let path;
+            let pos = url.indexOf("://");
+            if (pos > 0) {
+                path = url.substring(pos + 3);
+                pos = path.indexOf("/");
+                host = path.substr(0, pos);
+                path = path.substring(pos);
+            } else {
+                path = url;
+            }
+            let request_content = nonce + '\n' + method + '\n' + path + '\n' + host + '\n';
+            let hash = Crypto.HmacSHA256(request_content, mac_key);
+            let mac = hash.toString(Crypto.enc.Base64);
+            return mac;
+        };
+        let mac = _getMac();
+
+        let strAuth = `MAC id="${access_token}",nonce="${nonce}",mac="${mac}"`;
         return strAuth;
     },
 

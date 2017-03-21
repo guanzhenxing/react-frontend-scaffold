@@ -17,8 +17,8 @@ const initialState = fromJS({
     loading: false,
     error: null,
     success: false,
-    user: authUtil.getAuth() || {},
-    token: authUtil.getAccessToken() || {}
+    user: authUtil.getUser() || {},
+    token: authUtil.getTokens('access_token') || {}
 });
 
 function auth(state = initialState, action) {
