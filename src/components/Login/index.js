@@ -138,7 +138,7 @@ class Login extends Component {
                             <input type='submit' value='登录' className={`${styles['login-form__btn']}`}/>
                         </div>
                         <div className={styles['error-login']}>
-                            {this.props.loginErr}
+                            {this.props.error}
                         </div>
                     </form>
                 </div>

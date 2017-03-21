@@ -4,7 +4,7 @@
  */
 import 'whatwg-fetch'
 
-import GeneralUtil from './general-util';
+import {encodeURI} from './general-util';
 const authUtil = require('./auth-util');
 import {getCurrentHost} from './config-util';
 
@@ -29,7 +29,7 @@ function _parseJSON(response) {
  */
 export function request(url, body, method, host, withAuthToken = true) {
 
-    let _url = GeneralUtil.encodeURI(url);
+    let _url = encodeURI(url);
     let _method = method.toUpperCase();
     let _host = host || getCurrentHost().target;
 

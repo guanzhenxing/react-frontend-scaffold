@@ -7,9 +7,9 @@
 import {call, put, takeEvery}  from 'redux-saga/effects'
 import * as types from '../constants/action-types'
 import {onLoginFetch, onLoginSuccess, onLoginError} from '../actions/auth/auth-action';
-// import {getMD5Value} from '../utils/NDMD5Util';
-// import {getCurrentUC, getCurrentHost} from  '../utils/config-util';
-// import FetchUtil from "../utils/fetch-util";
+import CryptoJS from 'crypto-js';
+import {getCurrentUC, getCurrentHost} from  '../utils/config-util';
+import {request, doGet} from "../utils/fetch-util";
 // import DispatchUtil from '../utils/dispatchUtil';
 const authUtil = require('../utils/auth-util');
 import {hashHistory} from 'react-router'
@@ -20,12 +20,13 @@ import {hashHistory} from 'react-router'
  * @param password
  */
 function getToken(username, password) {
-    // let user = {
-    //     login_name: username,
-    //     password: getMD5Value(password)
-    // };
-    // let url = `${getCurrentUC().url}/tokens`;
-    // return FetchUtil.request(url, user, 'POST', false);
+    let pwd = CryptoJS.MD5(password).toString(CryptoJS.enc.Base64);
+    let user = {
+        login_name: username,
+        password: pwd
+    };
+    let url = `${getCurrentUC().url}/tokens`;
+    return request(url, user, 'POST', null, false);
 }
 
 /**
@@ -39,16 +40,10 @@ function* storeToken(tokens) {
 /**
  * 获得用户信息
  */
-function getUserInfo() {
-    // let dispatchParam = {
-    //     protocol: 'http',
-    //     api: '/auth',
-    //     ver: 'v0.1',
-    //     host: getCurrentHost().dispatch,
-    //     vars: {},
-    //     module: "admin"
-    // };
-    // return new DispatchUtil().dispatch(dispatchParam);
+function getUserInfo(tokens) {
+    let userId = tokens['user_id'];
+    let url = `${getCurrentUC().url}/users/${userId}`;
+    return doGet(url);
 }
 
 /**
@@ -63,13 +58,14 @@ function* storeUserInfo(userInfo) {
  * @param user
  */
 function* login(data) {
+    console.log('>>>>>>', data);
     yield put(onLoginFetch());
     try {
         let username = data.payload.username;
         let password = data.payload.password;
         const tokens = yield call(getToken, username, password);
         yield call(storeToken, tokens);
-        const userInfo = yield call(getUserInfo);
+        const userInfo = yield call(getUserInfo, tokens);
         yield call(storeUserInfo, userInfo);
         yield put(onLoginSuccess({tokens, userInfo}));
         hashHistory.push('/');

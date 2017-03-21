@@ -1,6 +1,7 @@
 /**
  * Created by guanzhenxing on 2017-03-18.
  */
+import CryptoJS from 'crypto-js';
 const datetime = require('./datetime');
 const storage = require('./storage');
 
@@ -111,8 +112,8 @@ module.exports = {
                 path = url;
             }
             let request_content = nonce + '\n' + method + '\n' + path + '\n' + host + '\n';
-            let hash = Crypto.HmacSHA256(request_content, mac_key);
-            let mac = hash.toString(Crypto.enc.Base64);
+            let hash = CryptoJS.HmacSHA256(request_content, mac_key);
+            let mac = hash.toString(CryptoJS.enc.Base64);
             return mac;
         };
         let mac = _getMac();
