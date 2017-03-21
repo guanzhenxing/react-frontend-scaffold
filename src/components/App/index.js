@@ -25,7 +25,7 @@ const buildHeader = (props) => {
 
     return (
         <Header className="header">
-            <div className={styles['logo']}>工程院项目信息化系统</div>
+            <div className={styles['logo']}>This is a ReactJs APP</div>
             <Dropdown overlay={menu}>
                 <a className="ant-dropdown-link" href="#" style={{float: 'right', color: '#ffffff'}}>
                     {`${userName}(${userId})`} <Icon type="down"/> </a>
@@ -39,10 +39,28 @@ const buildMenu = (props) => {
     return (
         <Menu
             mode="inline"
-            defaultSelectedKeys={['teamCluster']}
-            style={{height: '100%'}}>
-            <Menu.Item key="teamCluster"><Link to="/teamCluster">项目集群</Link></Menu.Item>
-            <Menu.Item key="t20team"><Link to="/t20team">T20(TEAM)</Link></Menu.Item>
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+            style={{height: '100%'}}
+        >
+            <SubMenu key="sub1" title={<span><Icon type="user"/>subnav 1</span>}>
+                <Menu.Item key="1">option1</Menu.Item>
+                <Menu.Item key="2">option2</Menu.Item>
+                <Menu.Item key="3">option3</Menu.Item>
+                <Menu.Item key="4">option4</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub2" title={<span><Icon type="laptop"/>subnav 2</span>}>
+                <Menu.Item key="5">option5</Menu.Item>
+                <Menu.Item key="6">option6</Menu.Item>
+                <Menu.Item key="7">option7</Menu.Item>
+                <Menu.Item key="8">option8</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub3" title={<span><Icon type="notification"/>subnav 3</span>}>
+                <Menu.Item key="9">option9</Menu.Item>
+                <Menu.Item key="10">option10</Menu.Item>
+                <Menu.Item key="11">option11</Menu.Item>
+                <Menu.Item key="12">option12</Menu.Item>
+            </SubMenu>
         </Menu>
     )
 }

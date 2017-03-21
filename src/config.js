@@ -6,14 +6,14 @@ const config = {
     host: {
         local: {
             rule: 'localhost',
-            target: 'nd-project-admin.dev.web.nd',
-            dispatch: 'nd-project.dev.web.nd',
+            target: '',
+            dispatch: '',
             version: 'v0.1',
         },
         dev: {
-            rule: 'nd-project-admin.dev.web.nd',
-            target: 'nd-project-admin.dev.web.nd',
-            dispatch: 'nd-project.dev.web.nd',
+            rule: '',
+            target: '',
+            dispatch: '',
             version: 'v0.1',
         },
         qa: {
@@ -42,7 +42,7 @@ const config = {
             host: 'ucbetapi.101.com',
         },
         dev: {
-            rule: 'nd-project-admin.dev.web.nd',
+            rule: '',
             url: 'https://ucbetapi.101.com/v0.93',
             host: 'ucbetapi.101.com',
         },

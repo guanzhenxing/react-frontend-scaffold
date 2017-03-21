@@ -35,7 +35,7 @@ function auth(state = initialState, action) {
         case LOGIN_CLEAN_ERROR:
             return state.set('loading', false).set('error', null).set('success', false).set('user', {}).set('token', {});
         case LOGOUT:
-            return state.set('loading', true).set('error', null).set('success', true).set('user', {}).set('token', {});
+            return state.set('loading', false).set('error', null).set('success', false).set('user', {}).set('token', {});
         default:
             return state;
     }

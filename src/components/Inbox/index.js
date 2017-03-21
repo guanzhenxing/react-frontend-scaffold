@@ -2,13 +2,10 @@
  * Created by guanzhenxing on 2017-03-08.
  */
 
-import React, {
-    Component,
-    PropTypes,
-} from 'react';
+import React from 'react';
 
 
-class Inbox extends Component {
+class Inbox extends React.Component {
 
     render() {
         return <div>Inbox</div>
