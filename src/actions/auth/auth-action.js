@@ -54,6 +54,6 @@ export function onLoginError(error) {
  */
 export function logout() {
     authUtil.setTokens(null);
-    // authUtil.setAuth(null);
+    authUtil.setUser(null);
     return createAction(types.LOGOUT)
 }
