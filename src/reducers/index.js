@@ -1,14 +1,18 @@
-import {routerReducer as route} from 'react-router-redux'
+import {routerReducer} from 'react-router-redux'
 import {combineReducers} from 'redux'
 
-import appReducer from './app'; //系统全局的reducer
+import app from './app'; //系统全局的reducer
+import auth from './auth';   //权限认证的reducer
+
+
 /**
  * 合并reducer
  * @type {Reducer<S>}
  */
 const rootReducer = combineReducers({
-    route,
-    app: appReducer
+    routing: routerReducer,
+    app,
+    auth,
 });
 
 export default rootReducer

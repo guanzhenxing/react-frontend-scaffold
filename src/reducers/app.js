@@ -6,10 +6,10 @@
 import {fromJS} from 'immutable';
 
 import {
-    LOAD_REPO_SUCCESS,
-    LOAD_REPO_FETCH,
-    LOAD_REPO_ERROR,
-} from '../constants/actionType';
+    FETCH,
+    SUCCESS,
+    ERROR,
+} from '../constants/action-types';
 
 const initialState = fromJS({
     loading: false,
@@ -20,11 +20,11 @@ const initialState = fromJS({
 function appReducer(state = initialState, action) {
 
     switch (action.type) {
-        case LOAD_REPO_FETCH:
+        case FETCH:
             return state.set('loading', true).set('error', null).set('success', false);
-        case LOAD_REPO_SUCCESS:
+        case SUCCESS:
             return state.set('loading', false).set('error', null).set('success', true);
-        case LOAD_REPO_ERROR:
+        case ERROR:
             return state.set('loading', false).set('error', action.error).set('success', false);
         default:
             return state;

@@ -17,5 +17,3 @@
  * Created by guanzhenxing on 2017-02-24.
  */
 
-
-import * as types from '../constants/actionType';

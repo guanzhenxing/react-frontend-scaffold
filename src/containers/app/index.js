@@ -1,14 +1,12 @@
 import React, {PropTypes} from 'react'
-// import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import App from '../components/App'
-import * as todoActions from '../actions/index'
-
-App.propTypes = {};
-
+import App from '../../components/App'
 
 const mapStateToProps = state => {
-    return {}
+
+    return {
+        userInfo: state.auth.toJS().user['user_info'] || {}
+    }
 };
 
 const mapDispatchToProps = dispatch => {
