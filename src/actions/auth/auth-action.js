@@ -12,7 +12,6 @@ const authUtil = require('../../utils/auth-util');
  * @returns {{type, user: *}}
  */
 export function login(user) {
-    debugger;
     return createAction(types.LOGIN, user);
 }
 

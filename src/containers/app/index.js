@@ -5,7 +5,7 @@ import App from '../../components/App'
 const mapStateToProps = state => {
 
     return {
-        userInfo: state.auth.toJS().user['user_info'] || {}
+        userInfo: state.auth.toJS().user || {}
     }
 };
 
